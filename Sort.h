@@ -82,20 +82,21 @@ int Sort<T>::partition(T** items, int first, int last, int (*compare) (T* one, T
    //initially, choosePivot does nothing           
    choosePivot(items, first, last); 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
+   int s1 = first;
+   T*pivot = items[first];
+   
+   for(int i = first; i < last; i++)
+   {											//3.23.17
+	   if((*compare)(items[i], pivot) <= 0 ) 
+	   {
+		   s1++;
+		   temp = items[s1];
+		   items[s1] = pivot;
+		   pivot = temp;
+	   }
+	 
+   }
 
      
 }
@@ -106,12 +107,11 @@ void Sort<T>::choosePivot(T** items, int first, int last)
    //DO THIS
    //find a better item to be the partition than simply using the item in the first index
    //you will need to swap
-
-
-
-
-
-
+   int mid = (first+(last-first))/2;
+	
+	T* temp = items[first]; //swap to avoid worst case scenario
+	items[first] = items[mid]; // 3.22.17
+	items[mid] = temp;
 
 }
 
