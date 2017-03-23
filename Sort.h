@@ -91,9 +91,9 @@ int Sort<T>::partition(T** items, int first, int last, int (*compare) (T* one, T
 	   if((*compare)(items[i], pivot) <= 0 ) 
 	   {
 		   s1++;
-		   temp = items[s1];
-		   items[s1] = pivot;
-		   pivot = temp;
+		   temp = items[i]; //3.23.17 I think the previous version was swapping pivot instead of s1.  We will test both versions.
+		   items[i] = items[s1];
+		   items[s1]= temp;
 	   }
 	 
    }
